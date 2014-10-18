@@ -8,7 +8,12 @@ class Spree::ReviewsController < Spree::StoreController
   end
 
   def new
-    @review = Spree::Review.new(:product => @product)
+    if params[:supplier_id]
+      @supplier = Spree::Supplier.find(params[:supplier_id])
+      @review = Spree::Review.new(product: @product, supplier: @supplier)
+    else
+      @review = Spree::Review.new(product: @product)
+    end
     authorize! :create, @review
   end
 

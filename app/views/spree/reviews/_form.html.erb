@@ -1,4 +1,5 @@
 <%= form_for review, :url => product_reviews_path(product), :html => {:method => :post} do |f| %>
+  <%= f.hidden_field :supplier_id if params[:supplier_id] %>
   <%= render "spree/shared/error_messages", :target => review %>
 
   <p class="review_rating_field">
