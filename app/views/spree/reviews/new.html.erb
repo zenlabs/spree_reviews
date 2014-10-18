@@ -1,3 +1,9 @@
-<%= content_tag :h2, Spree.t(:leave_us_a_review_for, :name => @product.name), :class => 'new-review-title' %>
+<% if params[:supplier_id] %>
+  <%= content_tag(:h2, Spree.t(:leave_us_a_review_for, name: "'#{@supplier.name}'").html_safe, class: 'new-review-title') %>
+<% else %>
+  <%= content_tag(:h2, Spree.t(:leave_us_a_review_for, name: link_to(@product.name, @product)).html_safe, class: 'new-review-title') %>
+<% end %>
 
-<%= render 'form', :review => @review, :product => @product %>
+<%= render 'form', review: @review, product: @product %>
+
+<%= link_to Spree.t(:back_to_product), @product %>
