@@ -23,6 +23,6 @@
   </p>
 
   <p class="review_submit">
-    <%= f.submit Spree.t(:submit_your_review), :class => "button bg_darkfirst btn btn-success" %>
+    <%= link_to Spree.t(:back_to_product), @product, class: "btn btn-warning btn-sm" %> <%= f.submit Spree.t(:submit_your_review), :class => "button bg_darkfirst btn btn-success" %>
   </p>
 <% end %>
